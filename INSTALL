@@ -39,7 +39,36 @@ conf/meshkit.conf and edit it accordingly:
 $ cd meshkit/conf/
 $ cp meshkit_example.conf meshkit.conf
 
-==== 1.3.2 Starting/Deploying web2py ====
+==== 1.3.2 Configuration for Communities ====
+There is a need for Community-Files and -Profiles:
+
+$ cd ~/meshkit
+$ git clone https://github.com/freifunk/openwrt-packages.git
+$ git clone https://github.com/freifunk/meshkit-community_files.git
+
+==== 1.3.3 Directory for Images====
+Images will be built in these directories:
+$ cd ~/meshkit
+$ mkdir images
+
+Link it to your local webserver to have downloadable files, do as root:
+$root# ln -s /home/meshkitter/meshkit/images/ /var/www/meshkit-images
+
+==== 1.3.4 Openwrt Imagebuilder Buildroots ====
+You need to have some Openwrt Imagebuilders to compile firmware for. Download Imagebuilders from Openwrt Downloadsite, unpack it and rename it as your needs: 
+$ cd ~/meshkit
+$ mkdir buildroots; cd buildroots
+$ wget https://downloads.openwrt.org/releases/19.07.1/targets/ath79/generic/openwrt-imagebuilder-19.07.1-ath79-generic.Linux-x86_64.tar.xz
+$ wget https://downloads.openwrt.org/releases/19.07.1/targets/ath79/tiny/openwrt-imagebuilder-19.07.1-ath79-tiny.Linux-x86_64.tar.xz
+$ wget https://downloads.openwrt.org/releases/19.07.1/targets/x86/generic/openwrt-imagebuilder-19.07.1-x86-generic.Linux-x86_64.tar.xz
+$ wget https://downloads.openwrt.org/releases/19.07.1/targets/ramips/mt7621/openwrt-imagebuilder-19.07.1-ramips-mt7621.Linux-x86_64.tar.xz
+$ tar -xvf openwrt-imagebuilder-19.07.1-x86-generic.Linux-x86_64.tar.xz
+$ tar -xvf openwrt-imagebuilder-19.07.1-ath79-generic.Linux-x86_64.tar.xz
+$ tar -xvf openwrt-imagebuilder-19.07.1-ath79-tiny.Linux-x86_64.tar.xz
+$ tar -xvf openwrt-imagebuilder-19.07.1-x86-generic.Linux-x86_64.tar.xz
+$ mv openwrt-imagebuilder-19.07.1-x86-generic x86-19071-generic
+
+==== 1.3.5 Starting/Deploying web2py ====
 
 There are different options for deployment, but the easiest one is
 to just run the web2py application with its integrated rocket webserver
@@ -100,16 +129,13 @@ Communitysupport:	Check this if you want to use meshkit to create images
 Profiles:		The path where the community profiles are stored locally.
 			You only need to set this if Communitysupport is enabled.
 			This must start end end with a slash ("/")
-			cd ~/meshkit; git clone https://github.com/openwrt/luci.git
-			cd luci/contrib/package/community-profiles/files/etc/config/; pwd
+			f.i. /home/meshkitter/meshkit/openwrt-packages/contrib/package/community-profiles/files/etc/config
 
 Communityfiles Dir:	Directory where custom files files for communities are stored
 			which will be copied into the generated firmware image.
 			You only need to set this if Communitysupport is enabled.
 			This must start end end with a slash ("/")
-			cd ~/meshkit; mkdir communityfiles; cd communityfiles
-			svn co https://svn.augsburg.freifunk.net/kamikaze/contrib/imagebuilder/trunk/profiles
-			cd profiles; pwd
+			f.i. /home/meshkitter/meshkit/meshkit-community_files
 
 Buildroots Dir:		This is the directory where meshkit can find your
 			extracted OpenWrt imagebuilders. Make sure this path
@@ -120,19 +146,20 @@ Buildroots Dir:		This is the directory where meshkit can find your
 			may rename these to some nices names, e.g.
 			ar71xx-backfire-10.03.1
 			This must start end end with a slash ("/")
-			cd ~/meshkit; mkdir buildroots; cd buildroots; pwd
+			f.i. /home/meshkitter/meshkit/buildroots/
 
 Images Output Dir:	This is the local path where generated images should
 			be stored after they are generated. Make sure the
 			user running web2py has read and write access to it.
 			This must start end end with a slash ("/")
-			cd ~/meshkit; mkdir images; cd images; pwd
+			f.i. /home/meshkitter/meshkit/images/
 
 Images Web Dir:		The web accessible path where users can download the
 			generated images. I assume you have some webserver
 			running which allows access to this path. If you don't
 			you may set Images Web Dir to static/images
 			and use http://<url>/static/images here.
+			f.i. http://<url>/meshkit-images/
 
 Add Defaultpackages:	A space seperated list of packages that should be added
 			to all generated images
