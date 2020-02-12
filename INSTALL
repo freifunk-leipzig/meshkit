@@ -34,7 +34,10 @@ $ git clone https://github.com/freifunk/meshkit.git
 
 ==== 1.3.1 Configuration file ====
 There is a sample configuration file in conf/meshkit_example.conf. Copy that to
-conf/meshkit.conf and edit it accordingly.
+conf/meshkit.conf and edit it accordingly:
+
+$ cd meshkit/conf/
+$ cp meshkit_example.conf meshkit.conf
 
 ==== 1.3.2 Starting/Deploying web2py ====
 
@@ -42,6 +45,7 @@ There are different options for deployment, but the easiest one is
 to just run the web2py application with its integrated rocket webserver
 directly. This can be done with the follwing command in the web2py folder:
 
+$ cd; cd meshkit; cd web2py
 $ python web2py.py --ip=0.0.0.0 --password=foobar --port=8000 --nogui
 
 For other kinds of deployment and integration with different webservers
