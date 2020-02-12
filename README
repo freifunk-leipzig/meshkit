@@ -22,10 +22,9 @@ See the INSTALL file for installing and configuring meshkit.
 Watch Meshkit development at: https://github.com/freifunk/meshkit
 
 == CONFIG ==
-Different Communities can have different configs. this can be edited via
-https://github.com/openwrt/luci/tree/master/contrib/package/community-profiles/files/etc/config
-and special files here
-https://github.com/freifunk/meshkit-community_files
+Different Communities have different configs:
+* Community Profiles: https://github.com/freifunk/openwrt-packages/tree/master/contrib/package/community-profiles/files/etc/config
+* Community Files: https://github.com/freifunk/meshkit-community_files
 
 == BUGTRACKER ==
 Report bugs, feature requests etc. at: https://github.com/freifunk/meshkit/issues
@@ -35,7 +34,7 @@ running meshkit servers are
 *  Meshkit Freifunk general (openwrt cc) https://meshkit.freifunk.net/ and https://testing.meshkit.freifunk.net/
 *  Meshkit Freifunk Halle (viele profiles, zb x86-kvm) https://meshkit.freifunk-halle.org/
 *  Meshkit Freifunk Weimarnetz (nur für weimar-IPs) https://meshkit.weimarnetz.de/
-*  Meshkit Freifunk Leipzig (viele profiles, auch x86, LEDE trunk-versionen) http://gadow.freifunk.net:8086/meshkit/
+*  Meshkit Freifunk Leipzig (viele profiles, auch x86, LEDE trunk-versionen) http://firmware.leipzig.freifunk.net/
 
 == DOCUMENTATION ==
 https://github.com/freifunk/meshkit-doc
